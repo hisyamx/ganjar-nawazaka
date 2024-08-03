@@ -35,9 +35,14 @@ const WeddingScroll = () => {
 
   useEffect(() => {
     if (visitedWelcome && audioRef.current) {
-      audioRef.current.play().catch((error) => {
-        console.error("Failed to play audio:", error);
-      });
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          console.error("Failed to play audio:", error);
+        });
     }
   }, [visitedWelcome]);
 
@@ -45,12 +50,17 @@ const WeddingScroll = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play().catch((error) => {
-          console.error("Failed to play audio:", error);
-        });
+        audioRef.current
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Failed to play audio:", error);
+          });
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -60,7 +70,7 @@ const WeddingScroll = () => {
         className="w-full absolute min-h-screen overflow-x-hidden flex flex-col max-w-[28.125rem] right-2/4 scroll-smooth"
         style={{ transform: `translate(50%)` }}
       >
-        <audio ref={audioRef} src="/audio/backsound.mp3" loop />
+        <audio ref={audioRef} src="/audio/backsound-ttm.mp3" loop />
         {visitedWelcome && (
           <nav className="fixed bottom-4 right-4 w-auto bg-white shadow-md p-2 rounded-full flex items-center z-50">
             <button
