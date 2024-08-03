@@ -37,13 +37,13 @@ const AddressSection = () => {
 
     setTimeout(() => {
       setTransitionIds((prev) => prev.concat(prev.length));
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
       setTransitionIds((prev) =>
         prev.concat([prev.length, prev.length + 1, prev.length + 2])
       );
-    }, 2200);
+    }, 1100);
   }, []);
 
   useIsInView(ref, handleTransition);

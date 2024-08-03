@@ -50,7 +50,7 @@ export default function RootLayout({
       >
         <ToastProvider>{children}</ToastProvider>
 
-        <div id="portal" className="relative"></div>
+        <div id="portal"></div>
       </body>
     </html>
   );

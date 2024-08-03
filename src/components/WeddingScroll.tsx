@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import AccountSection from "./section/AccountSection";
 import AddressSection from "./section/AddressSection";
 import BlockPintch from "./BlockPintch";
@@ -16,6 +16,8 @@ import StorySection from "./section/StorySection";
 const WeddingScroll = () => {
   const [visitedWelcome, setVisitedWelcome] = useState(false);
   const [visitedAll, setVisitedAll] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (visitedAll) {
@@ -31,30 +33,62 @@ const WeddingScroll = () => {
     window.scrollTo({ top: 0 });
   }, []);
 
+  useEffect(() => {
+    if (visitedWelcome && audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        console.error("Failed to play audio:", error);
+      });
+    }
+  }, [visitedWelcome]);
+
+  const handlePlayMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handlePauseMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <BlockPintch>
       <main
         className="w-full absolute min-h-screen overflow-x-hidden flex flex-col max-w-[28.125rem] right-2/4 scroll-smooth"
         style={{ transform: `translate(50%)` }}
       >
-        {/* <div className="absolute inset-0 bg-black/70 z-10" /> */}
-        {/* <main
-          className="w-full absolute min-h-screen overflow-x-hidden flex flex-col large:max-w-[430px] right-2/4 scroll-smooth"
-          style={{ transform: `translate(50%)` }}
-        > */}
+        <audio ref={audioRef} src="/audio/backsound.mp3" loop />
+        {visitedWelcome && (
+          <nav className="fixed bottom-4 right-4 w-auto bg-white shadow-md p-2 rounded-full flex items-center z-50">
+            <button
+              onClick={isPlaying ? handlePauseMusic : handlePlayMusic}
+              className="bg-transparent border-none focus:outline-none"
+            >
+              <Image
+                src={isPlaying ? "/resume.png" : "/play.png"}
+                alt={isPlaying ? "Pause" : "Play"}
+                width={40}
+                height={40}
+              />
+            </button>
+          </nav>
+        )}
         <section id="scroll-container" className="relative w-full h-full">
           {!visitedWelcome && (
             <section className="absolute top-0 left-0 w-full h-full z-10">
               <Welcome onNext={() => setVisitedWelcome(true)} />
             </section>
           )}
-          <IntroduceSection visitedWelcome={visitedWelcome} />
-          {/* <Spacing size={100} /> */}
-          <StorySection />
-          <Spacing size={100} />
+          {/* <IntroduceSection visitedWelcome={visitedWelcome} /> */}
+          <StorySection visitedWelcome={visitedWelcome} />
+          <Spacing size={75} />
           <CoupleSection />
-          <Spacing size={100} />
-          <CalendarSection />
+          {/* <Spacing size={100} />
+          <CalendarSection /> */}
           <Spacing size={100} />
           <AddressSection />
           <Spacing size={100} />

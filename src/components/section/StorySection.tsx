@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { BonVivantFont } from "@/style/fonts";
 import SlideUp from "../SlideUp";
@@ -12,12 +12,27 @@ import useIsInView from "@/hooks/useIsInView";
 import Image from "next/image";
 
 const TITLE = ["QS Ar-Rum 21"];
-const Story = () => {
+const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
+  
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const [startTransition, setStartTransition] = useState(false);
   const [callTimeout, setCallTimeout] = useState(false);
+
+  const handleTransition = useCallback(() => {
+    intervalId.current = setInterval(() => {
+      setTransitionIds((prev) => {
+        if (prev.length === 6) {
+          clearInterval(intervalId.current!);
+          return prev;
+        }
+        return prev.concat(prev.length);
+      });
+    }, 200);
+
+  }, []);
 
   useInterval(() => {
     if (!startTransition || transitionIds.length >= TITLE.length) return;
@@ -52,13 +67,15 @@ const Story = () => {
     }
   }, [transitionIds]);
 
-  useIsInView(ref, () => setStartTransition(true));
+  // useIsInView(ref, () => setStartTransition(true));
+  useIsInView(ref, handleTransition, !visitedWelcome);
 
   return (
     <section
       id="reli-section"
       ref={ref}
-      className="w-full px-24pxr relative -mt-8"
+      className="w-full px-24pxr relative"
+      // className="w-full px-24pxr relative -mt-8"
     >
       <div className="absolute inset-0">
         <Image
@@ -71,7 +88,7 @@ const Story = () => {
         />
       </div>
 
-      <Spacing size={50} />
+      <Spacing size={75} />
 
       {TITLE.map((title, index) => (
         <SlideUp key={index} show={transitionIds.includes(index)}>
@@ -83,7 +100,10 @@ const Story = () => {
 
       <Spacing size={15} />
 
-      <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full pb-24">
+      <SlideUp
+        show={transitionIds.includes(TITLE.length)}
+        className="w-full pb-24"
+      >
         <Text
           display="inline-block"
           className={`whitespace-pre-line text-justify`}

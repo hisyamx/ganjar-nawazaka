@@ -106,7 +106,7 @@ const AccountSection = ({ onDone }: { onDone: () => void }) => {
         <SlideUp show={transitionIds.includes(TITLE.length + 1)}>
           <Arcodion>
             <Arcodion.Header className="cursor-pointer w-full py-21.5pxr border-t border-black">
-              <Text>Nomor Rekening Pengantin</Text>
+              <Text>Nomor Rekening mempelai Wanita  </Text>
               <Arcodion.Arrow />
             </Arcodion.Header>
             <Arcodion.Content>

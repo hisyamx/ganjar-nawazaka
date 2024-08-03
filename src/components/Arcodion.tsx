@@ -7,7 +7,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
 
 import ArrowBottom from "../../public/arrow_bottom.svg";
@@ -24,9 +24,8 @@ const useArcodion = () => {
   }
   return context;
 };
-
 const Arcodion = ({ children }: { children: ReactNode }) => {
-  const [visible, setVisible] = useState(true); // Set default state to true
+  const [visible, setVisible] = useState(false);
   const toggle = useCallback(() => setVisible((prev) => !prev), []);
 
   return (
@@ -38,7 +37,7 @@ const Arcodion = ({ children }: { children: ReactNode }) => {
 
 const Header = ({
   children,
-  className,
+  className
 }: {
   children: ReactNode;
   className: string;
@@ -68,7 +67,7 @@ const Content = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setMaxHeight(visible ? 1000 : 0); // Use a large enough maxHeight
+    setMaxHeight(visible ? 1000 : 0);
   };
 
   useEffect(() => {

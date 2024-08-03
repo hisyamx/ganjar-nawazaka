@@ -11,7 +11,7 @@ import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
 // const TITLE = ["THE", "MARRIAGE", "OF"];
-const TITLE = ["G & N"];
+const TITLE = ["S & G"];
 const CoupleSection = () => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
@@ -56,6 +56,7 @@ const CoupleSection = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useIsInView(ref, () => setStartTransition(true));
+  // useIsInView(ref, handleTransition, !visitedWelcome);
 
   return (
     <section ref={ref} id="couple-section" className="w-full px-24pxr">
