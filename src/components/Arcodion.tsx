@@ -7,7 +7,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 
 import ArrowBottom from "../../public/arrow_bottom.svg";
@@ -24,9 +24,10 @@ const useArcodion = () => {
   }
   return context;
 };
+
 const Arcodion = ({ children }: { children: ReactNode }) => {
-  const [visible, setVisible] = useState(false);
-  const toggle = useCallback(() => setVisible((prev) => !prev), []);
+  const [visible, setVisible] = useState(true); // Always set to true
+  const toggle = useCallback(() => {}, []); // Disable toggle
 
   return (
     <ArcodionContext.Provider value={{ visible, toggle }}>
@@ -37,7 +38,7 @@ const Arcodion = ({ children }: { children: ReactNode }) => {
 
 const Header = ({
   children,
-  className
+  className,
 }: {
   children: ReactNode;
   className: string;
@@ -67,7 +68,7 @@ const Content = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setMaxHeight(visible ? 1000 : 0);
+    setMaxHeight(visible ? ref.current.scrollHeight : 0); // Set maxHeight based on scrollHeight
   };
 
   useEffect(() => {
