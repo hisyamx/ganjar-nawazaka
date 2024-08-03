@@ -18,6 +18,9 @@ import Spacing from "../Spacing";
 import Title from "./Title";
 import useIsInView from "@/hooks/useIsInView";
 
+const TITLE = ["Gallery"];
+
+
 const getGalleryImageLoader = (number: number) => {
   return `/gallery/gallery_${number < 10 ? `0${number}` : number}.jpg`;
 };
@@ -66,9 +69,16 @@ const GallerySection = () => {
   return (
     <>
       <section ref={ref} id="gallery-section" className="w-full">
-        <SlideUp className="w-full px-24pxr" show={transitionIds.includes(0)}>
-          <Title>Gallery</Title>
-        </SlideUp>
+        <div className="text-center">
+          {/* {TITLE.map((title, i) => (
+            <SlideUp key={title} show={transitionIds.includes(i)}>
+              <Title>{title}</Title>
+            </SlideUp>
+          ))} */}
+          <SlideUp className="w-full px-24pxr" show={transitionIds.includes(0)}>
+            <Title>Gallery</Title>
+          </SlideUp>
+        </div>
 
         <Spacing size={10} />
 

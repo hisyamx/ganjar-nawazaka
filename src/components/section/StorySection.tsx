@@ -1,16 +1,12 @@
-"use client";
-
 import React, { useCallback, useEffect, useRef, useState } from "react";
-
 import { BonVivantFont } from "@/style/fonts";
 import SlideUp from "../SlideUp";
 import Spacing from "../Spacing";
 import Title from "./Title";
-import Text, { TextProps } from "../Text";
+import Text from "../Text";
 import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 import Image from "next/image";
-import CoupleImage from "./CoupleImage";
 import Subtitle from "./Subtitle";
 
 const TITLE = ["The Groom & Bride"];
@@ -69,16 +65,10 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
     }
   }, [transitionIds]);
 
-  // useIsInView(ref, () => setStartTransition(true));
   useIsInView(ref, handleTransition, !visitedWelcome);
 
   return (
-    <section
-      id="reli-section"
-      ref={ref}
-      className="w-full px-24pxr relative"
-      // className="w-full px-24pxr relative -mt-8"
-    >
+    <section id="reli-section" ref={ref} className="w-full px-24pxr relative">
       <div className="absolute inset-0">
         <Image
           quality={100}
@@ -92,32 +82,36 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
 
       <Spacing size={50} />
 
-      <div className="relative flex items-center justify-center w-20 h-20 rounded-full border border-gray-400">
-        <div className="absolute inset-0 rounded-full border-2 border-white"></div>
-        <Text
-          className={`text-10pxr medium:text-20pxr large:text-24pxr leading-none ${BonVivantFont.className}`}
-        >
-          S&G
-        </Text>
+      <div className="flex justify-center">
+        <div className="flex items-center justify-center w-20 h-20 rounded-full border border-gray-400">
+          {/* <div className="absolute inset-0 rounded-full border-2 border-white"></div> */}
+          <Text
+            className={`text-10pxr medium:text-20pxr large:text-24pxr leading-none ${BonVivantFont.className}`}
+          >
+            S&G
+          </Text>
+        </div>
       </div>
 
       <Spacing size={15} />
 
       {/* Section 2 */}
-      {TITLE.map((title, index) => (
-        <SlideUp key={index} show={transitionIds.includes(index)}>
-          <Title key={title} display="block">
-            {title}
-          </Title>
-        </SlideUp>
-      ))}
+      <div className="text-center">
+        {TITLE.map((title, index) => (
+          <SlideUp key={index} show={transitionIds.includes(index)}>
+            <Title key={title} display="block">
+              {title}
+            </Title>
+          </SlideUp>
+        ))}
+      </div>
 
       <Spacing size={15} />
 
       <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
         <Text
           display="inline-block"
-          className={`whitespace-pre-line text-justify`}
+          className={`whitespace-pre-line text-center text-14xpr`}
         >
           {`Assalamu'alaikum Warahmatullaahi Wabarakaatuh. Dengan memohon Rahmat dan Ridho Allah SWT. Kami mengharapkan kehadiran Bapak/Ibu/Saudara/i. pada acara Resepsi Pernikahan putra-putri kami:`}
         </Text>
@@ -137,7 +131,7 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
             className="rounded-full"
           />
           <Spacing size={10} />
-          <div>
+          <div className="flex flex-col gap-3">
             <Subtitle display="block">
               Nawazaka Putri Rinjani, S.I.Kom.
             </Subtitle>
@@ -151,7 +145,7 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
       <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
         <div className="w-full flex flex-row items-center gap-4">
           <Spacing size={10} />
-          <div>
+          <div className="flex flex-col gap-3">
             <Subtitle display="block">Ganjar Prasetyo, S.Hut.</Subtitle>
             <Text display="inline-block" className={`whitespace-pre-line`}>
               {`Putra Bapak Fadholi & \n Ibu Kun Mariana`}
@@ -169,26 +163,30 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
       </SlideUp>
       {/* section couple */}
 
-      <Spacing size={75} />
+      <Spacing size={50} />
+
+      <div className="border-b border-gray-200/75"></div>
+
+      <Spacing size={50} />
 
       {/* Section 2 */}
+
       <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
-        <Subtitle display="block">QS Ar-Rum 21</Subtitle>
-      </SlideUp>
-
-      <Spacing size={15} />
-
-      <SlideUp
-        show={transitionIds.includes(TITLE.length)}
-        className="w-full pb-24"
-      >
         <Text
           display="inline-block"
-          className={`whitespace-pre-line text-justify`}
+          className={`whitespace-pre-line text-center text-14xpr`}
         >
           {`"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."`}
         </Text>
       </SlideUp>
+
+      <Spacing size={15} />
+
+      <div className="text-center pb-24">
+        <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
+          <Subtitle display="block">QS Ar-Rum 21</Subtitle>
+        </SlideUp>
+      </div>
 
       {/* Section 1 */}
     </section>
