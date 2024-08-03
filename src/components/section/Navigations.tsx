@@ -7,7 +7,7 @@ import Flex from "../Flex";
 import Link from "next/link";
 // import NaverMap from "../../../public/naverMap.svg";
 // import TMap from "../../../public/tMap.svg";
-import GMap from "../../../public/new.svg";
+// import GMap from "../../../public/new.svg";
 import Image from "next/image";
 
 const Navigations = () => {
@@ -38,8 +38,8 @@ const Navigations = () => {
         <Image
           src="/new.svg" // Replace with your company logo path
           alt="Map"
-          width={40} // Set your desired width
-          height={40} // Set your desired height
+          width={60} // Set your desired width
+          height={60} // Set your desired height
           className="flex-none rounded-full border border-gray-300"
         />
         {/* <GMap className="flex-none" /> */}

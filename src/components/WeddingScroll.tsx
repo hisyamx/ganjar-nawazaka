@@ -85,14 +85,14 @@ const WeddingScroll = () => {
           )}
           {/* <IntroduceSection visitedWelcome={visitedWelcome} /> */}
           <StorySection visitedWelcome={visitedWelcome} />
-          <Spacing size={75} />
-          <CoupleSection />
+          {/* <Spacing size={100} /> */}
+          {/* <CoupleSection /> */}
           {/* <Spacing size={100} />
           <CalendarSection /> */}
           <Spacing size={100} />
-          <AddressSection />
-          <Spacing size={100} />
           <GallerySection />
+          <Spacing size={100} />
+          <AddressSection />
           <Spacing size={80} />
           <AccountSection onDone={() => setVisitedAll(true)} />
         </section>

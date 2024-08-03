@@ -3,7 +3,7 @@ import React, { CSSProperties, ReactNode } from "react";
 import { BonVivantFont } from "@/style/fonts";
 import Text from "../Text";
 
-const Title = ({
+const Subtitle = ({
   children,
   display = "inline"
 }: {
@@ -13,11 +13,11 @@ const Title = ({
   return (
     <Text
       style={{ display }}
-      className={`${BonVivantFont.className} text-24pxr leading-45pxr medium:text-34pxr medium:leading-37pxr large:text-40pxr large:leading-44pxr whitespace-pre-line`}
+      className={`${BonVivantFont.className} text-14pxr font-bold leading-20pxr medium:text-24pxr medium:leading-27pxr large:text-30pxr large:leading-34pxr whitespace-pre-line`}
     >
       {children}
     </Text>
   );
 };
 
-export default Title;
+export default Subtitle;

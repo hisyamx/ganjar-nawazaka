@@ -83,7 +83,7 @@ const ImageDetails = ({
                 width={764}
                 height={1146}
                 alt="image"
-                className="w-full h-full"
+                className="w-full h-full rounded-lg"
               />
             </SwiperSlide>
           ))}

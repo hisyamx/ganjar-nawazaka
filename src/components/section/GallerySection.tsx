@@ -1,16 +1,14 @@
 "use client";
 
 import "swiper/css";
-
 import React, {
   useCallback,
   useEffect,
   useMemo,
   useRef,
-  useState
+  useState,
 } from "react";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
-
 import FadeIn from "../FadeIn";
 import Image from "next/image";
 import ImageDetails from "../ImageDetails";
@@ -24,39 +22,35 @@ const getGalleryImageLoader = (number: number) => {
   return `/gallery/gallery_${number < 10 ? `0${number}` : number}.jpg`;
 };
 const IMAGES = Array.from({ length: 10 }, (_, i) => ({
-  url: getGalleryImageLoader(i + 1)
+  url: getGalleryImageLoader(i + 1),
 }));
-const GallerySection = () => {
-  const [selectedIndex, setSlectedIndex] = useState(0);
 
+const GallerySection = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [visibleModal, setVisibleModal] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const [transitionIds, setTransitionIds] = useState<number[]>([]);
+  const [swiper, setSwiper] = useState<SwiperClass>();
 
   useEffect(() => {
     if (!sliderRef.current) return;
 
     const target = document.getElementById(`small-image-${selectedIndex}`);
-
     if (!target) return;
-    const slider = sliderRef.current;
 
+    const slider = sliderRef.current;
     const targetWidth = target.offsetWidth;
     const targetLeft = target.offsetLeft;
     const targetCenter = targetLeft + targetWidth / 2;
-
     const sliderWidth = slider.offsetWidth;
     const sliderCenter = sliderWidth / 2;
 
     slider.scrollTo({
       left: targetCenter - sliderCenter,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }, [selectedIndex]);
-
-  const [visibleModal, setVisibleModal] = useState(false);
-
-  const ref = useRef<HTMLDivElement>(null);
-
-  const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const handleTransition = useCallback(() => {
     setTransitionIds((prev) => prev.concat(prev.length));
@@ -69,34 +63,35 @@ const GallerySection = () => {
     [selectedIndex]
   );
 
-  const [swiper, setSwiper] = useState<SwiperClass>();
-
   return (
     <>
       <section ref={ref} id="gallery-section" className="w-full">
         <SlideUp className="w-full px-24pxr" show={transitionIds.includes(0)}>
-          <Title>GALLERY</Title>
+          <Title>Gallery</Title>
         </SlideUp>
 
         <Spacing size={10} />
 
         <FadeIn show={isInView}>
-          <div className="w-full px-24pxr">
+          <div className="w-full px-24pxr rounded-lg">
             <Swiper
               loop
               initialSlide={selectedIndex}
               slidesPerView={1}
-              onSlideChange={(slider) => setSlectedIndex(slider.realIndex)}
+              onSlideChange={(slider) => setSelectedIndex(slider.realIndex)}
               onSwiper={(swiper) => setSwiper(swiper)}
+              speed={400} // Reducing speed for faster transitions
+              // lazy
             >
               {IMAGES.map((image, index) => (
                 <SwiperSlide key={index}>
                   <img
-                    className={`w-full cursor-pointer`}
+                    className="w-full cursor-pointer rounded-xl"
                     alt="selected-image"
                     src={image.url}
                     width={764}
                     height={1146}
+                    loading="lazy"
                     onClick={(e) => {
                       e.stopPropagation();
                       setVisibleModal(true);
@@ -114,7 +109,7 @@ const GallerySection = () => {
           <Spacing size={16} />
           <div
             ref={sliderRef}
-            className="flex flex-row flex-nowrap gap-4pxr overflow-y-scroll px-24pxr"
+            className="flex flex-row gap-1 overflow-x-auto px-24pxr rounded-lg"
           >
             {IMAGES.map((image, index) => (
               <div
@@ -124,7 +119,7 @@ const GallerySection = () => {
                   e.stopPropagation();
                   swiper?.slideToLoop(index);
                 }}
-                className={`relative cursor-pointer w-60pxr h-90pxr flex-none`}
+                className="relative cursor-pointer w-20 h-30 flex-none rounded-lg"
               >
                 <Image
                   quality={100}

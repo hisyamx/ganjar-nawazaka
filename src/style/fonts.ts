@@ -4,7 +4,7 @@ export const BonVivantFont = localFont({
   src: [
     {
       path: "../../public/font/BonVivantSerif.ttf",
-      weight: "400",
+      weight: "600",
       style: "normal"
     }
   ],

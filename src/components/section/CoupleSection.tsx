@@ -56,7 +56,6 @@ const CoupleSection = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useIsInView(ref, () => setStartTransition(true));
-  // useIsInView(ref, handleTransition, !visitedWelcome);
 
   return (
     <section ref={ref} id="couple-section" className="w-full px-24pxr">

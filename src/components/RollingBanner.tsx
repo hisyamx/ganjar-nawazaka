@@ -10,9 +10,9 @@ const RollingBanner = () => {
   return (
     <div
       id="rolling-banner"
-      className="wrapper overflow-hidden will-change-auto"
+      className="wrapper overflow-hidden will-change-auto rounded-xl"
     >
-      <div className="slide-container text-white bg-black py-10pxr text-14pxr leading-25pxr will-change-auto">
+      <div className="slide-container bg-gray-100 text-black py-10pxr text-14pxr leading-25pxr will-change-auto">
         <ul className="slide-wrapper will-change-auto">
           <div className="slide-original will-change-auto">
             {BANNERS.map((banner, i) => (

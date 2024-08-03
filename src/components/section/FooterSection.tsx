@@ -40,7 +40,7 @@ const FooterSection = () => {
         </Text>
         <Text
           display="inline-block"
-          className={`text-16pxr leading-45pxr medium:text-24pxr medium:leading-57pxr large:text-32pxr large:leading-64pxr whitespace-pre-line uppercase ${BonVivantFont.className}`}
+          className={`text-16pxr leading-45pxr medium:text-24pxr medium:leading-57pxr large:text-32pxr large:leading-64pxr whitespace-pre-line ${BonVivantFont.className}`}
         >
           Saka & Ganjar
         </Text>

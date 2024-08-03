@@ -10,12 +10,15 @@ import Text, { TextProps } from "../Text";
 import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 import Image from "next/image";
+import CoupleImage from "./CoupleImage";
+import Subtitle from "./Subtitle";
 
-const TITLE = ["QS Ar-Rum 21"];
+const TITLE = ["The Groom & Bride"];
+
 const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
   const intervalId = useRef<NodeJS.Timeout | null>(null);
-  
+
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
 
   const [startTransition, setStartTransition] = useState(false);
@@ -31,7 +34,6 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
         return prev.concat(prev.length);
       });
     }, 200);
-
   }, []);
 
   useInterval(() => {
@@ -84,12 +86,24 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
           layout="fill"
           objectFit="cover"
           alt="background"
-          className="-z-10 rounded-t-[1.25rem]"
+          className="-z-10 rounded-[1.25rem]"
         />
       </div>
 
-      <Spacing size={75} />
+      <Spacing size={50} />
 
+      <div className="relative flex items-center justify-center w-20 h-20 rounded-full border border-gray-400">
+        <div className="absolute inset-0 rounded-full border-2 border-white"></div>
+        <Text
+          className={`text-10pxr medium:text-20pxr large:text-24pxr leading-none ${BonVivantFont.className}`}
+        >
+          S&G
+        </Text>
+      </div>
+
+      <Spacing size={15} />
+
+      {/* Section 2 */}
       {TITLE.map((title, index) => (
         <SlideUp key={index} show={transitionIds.includes(index)}>
           <Title key={title} display="block">
@@ -97,6 +111,70 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
           </Title>
         </SlideUp>
       ))}
+
+      <Spacing size={15} />
+
+      <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
+        <Text
+          display="inline-block"
+          className={`whitespace-pre-line text-justify`}
+        >
+          {`Assalamu'alaikum Warahmatullaahi Wabarakaatuh. Dengan memohon Rahmat dan Ridho Allah SWT. Kami mengharapkan kehadiran Bapak/Ibu/Saudara/i. pada acara Resepsi Pernikahan putra-putri kami:`}
+        </Text>
+      </SlideUp>
+
+      <Spacing size={50} />
+
+      {/* section couple */}
+      <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
+        <div className="w-full flex flex-row items-center gap-4">
+          <Spacing size={10} />
+          <Image
+            src="/profile/object-2.jpg"
+            alt="Nawazaka Putri Rinjani"
+            width={125}
+            height={125}
+            className="rounded-full"
+          />
+          <Spacing size={10} />
+          <div>
+            <Subtitle display="block">
+              Nawazaka Putri Rinjani, S.I.Kom.
+            </Subtitle>
+            <Text display="inline-block" className={`whitespace-pre-line`}>
+              {`Putri Bapak (Alm.) Moh. Kholid Hidayatullah & \n Ibu Tutiek Soelistyani`}
+            </Text>
+          </div>
+        </div>
+      </SlideUp>
+      <Spacing size={25} />
+      <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
+        <div className="w-full flex flex-row items-center gap-4">
+          <Spacing size={10} />
+          <div>
+            <Subtitle display="block">Ganjar Prasetyo, S.Hut.</Subtitle>
+            <Text display="inline-block" className={`whitespace-pre-line`}>
+              {`Putra Bapak Fadholi & \n Ibu Kun Mariana`}
+            </Text>
+          </div>
+          <Spacing size={10} />
+          <Image
+            src="/profile/object-1.jpg"
+            alt="Ganjar Prasetyo"
+            width={125}
+            height={125}
+            className="rounded-full"
+          />
+        </div>
+      </SlideUp>
+      {/* section couple */}
+
+      <Spacing size={75} />
+
+      {/* Section 2 */}
+      <SlideUp show={transitionIds.includes(TITLE.length)} className="w-full">
+        <Subtitle display="block">QS Ar-Rum 21</Subtitle>
+      </SlideUp>
 
       <Spacing size={15} />
 
@@ -111,6 +189,8 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
           {`"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."`}
         </Text>
       </SlideUp>
+
+      {/* Section 1 */}
     </section>
   );
 };

@@ -27,16 +27,16 @@ const Account = ({
       direction="row"
       justify="space-between"
       align="center"
-      className="p-16pxr bg-[#F4F4F4]"
+      className="p-16pxr bg-gray-100 rounded-xl mb-1"
     >
       <Flex align="start text-14pxr leading-16.5pxr">
-        <Text className="font-bold">{name}</Text>
+        <Text className="font-bold text-left">{name}</Text>
         <Spacing size={4} direction="horizontal" />
         <Text className="mt-6pxr">{`${bankInfo.bankName} ${bankInfo.accountNumber}`}</Text>
       </Flex>
       <button
         onClick={handleAccountCopy}
-        className="ml-20pxr flex-none text-[#474747] text-12pxr leading-25pxr bg-[#E2E2E2] px-12pxr font-bold"
+        className="ml-20pxr flex-none text-[#474747] text-12pxr leading-25pxr bg-blue-50 px-12pxr font-bold rounded-xl"
       >
         Salin
       </button>

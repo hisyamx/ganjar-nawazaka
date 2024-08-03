@@ -1,14 +1,16 @@
 import React, { ReactNode } from "react";
+import { BonVivantFont } from "@/style/fonts";
 
 import Text from "../Text";
 
 const Address = ({ title, desc }: { title: string; desc: string }) => {
   return (
     <>
+      
       <Text
         display="block"
         as="h4"
-        className="whitespace-pre-line font-bold text-16pxr leading-25pxr"
+        className={`text-24pxr font-bold ${BonVivantFont.className} mb-2 whitespace-pre-line font-bold text-16pxr leading-25pxr`}
       >
         {title}
       </Text>

@@ -12,7 +12,7 @@ import Title from "./Title";
 import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
-const TITLE = ["GIFT", "FOR", "WEDDING", "CEREMONY"];
+const TITLE = ["Gift For", "Wedding Ceremony"];
 
 const AccountSection = ({ onDone }: { onDone: () => void }) => {
   const [transitionIds, setTransitionIds] = useState<number[]>([]);
@@ -68,7 +68,7 @@ const AccountSection = ({ onDone }: { onDone: () => void }) => {
       <section
         ref={ref}
         id="account-section"
-        className="w-full bg-gradient-to-b from-white to-[#e4eeff] px-24pxr pb-8"
+        className="w-full bg-gradient-to-b from-white to-[#e4eeff] px-24pxr pb-8 text-center"
       >
         {TITLE.map((title, i) => (
           <SlideUp key={title} show={transitionIds.includes(i)}>
@@ -106,7 +106,7 @@ const AccountSection = ({ onDone }: { onDone: () => void }) => {
         <SlideUp show={transitionIds.includes(TITLE.length + 1)}>
           <Arcodion>
             <Arcodion.Header className="cursor-pointer w-full py-21.5pxr border-t border-black">
-              <Text>Nomor Rekening mempelai Wanita  </Text>
+              <Text>Nomor Rekening mempelai Wanita </Text>
               <Arcodion.Arrow />
             </Arcodion.Header>
             <Arcodion.Content>
