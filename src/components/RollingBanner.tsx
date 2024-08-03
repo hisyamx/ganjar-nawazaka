@@ -22,14 +22,14 @@ const RollingBanner = () => {
               </Fragment>
             ))}
           </div>
-          <div className="slide-clone will-change-auto">
+          {/* <div className="slide-clone will-change-auto">
             {BANNERS.map((banner, i) => (
               <Fragment key={i}>
                 <Glare className="flex-none inline" />
                 <Text>{banner}</Text>
               </Fragment>
             ))}
-          </div>
+          </div> */}
         </ul>
       </div>
     </div>
