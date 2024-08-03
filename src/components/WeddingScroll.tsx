@@ -41,17 +41,16 @@ const WeddingScroll = () => {
     }
   }, [visitedWelcome]);
 
-  const handlePlayMusic = () => {
+  const handlePlayPauseMusic = () => {
     if (audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
-  const handlePauseMusic = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch((error) => {
+          console.error("Failed to play audio:", error);
+        });
+      }
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -65,11 +64,11 @@ const WeddingScroll = () => {
         {visitedWelcome && (
           <nav className="fixed bottom-4 right-4 w-auto bg-white shadow-md p-2 rounded-full flex items-center z-50">
             <button
-              onClick={isPlaying ? handlePauseMusic : handlePlayMusic}
+              onClick={handlePlayPauseMusic}
               className="bg-transparent border-none focus:outline-none"
             >
               <Image
-                src={isPlaying ? "/resume.png" : "/play.png"}
+                src={isPlaying ? "/pause.png" : "/play.png"}
                 alt={isPlaying ? "Pause" : "Play"}
                 width={40}
                 height={40}
@@ -83,12 +82,7 @@ const WeddingScroll = () => {
               <Welcome onNext={() => setVisitedWelcome(true)} />
             </section>
           )}
-          {/* <IntroduceSection visitedWelcome={visitedWelcome} /> */}
           <StorySection visitedWelcome={visitedWelcome} />
-          {/* <Spacing size={100} /> */}
-          {/* <CoupleSection /> */}
-          {/* <Spacing size={100} />
-          <CalendarSection /> */}
           <Spacing size={100} />
           <GallerySection />
           <Spacing size={100} />
