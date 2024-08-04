@@ -94,37 +94,36 @@ const GallerySection = () => {
               // lazy
             >
               {IMAGES.map((image, index) => (
-                // <SwiperSlide key={index}>
-                //   <img
-                //     className="w-full cursor-pointer rounded-xl"
-                //     alt="selected-image"
-                //     src={image.url}
-                //     width={764}
-                //     height={1146}
-                //     loading="lazy"
-                //     onClick={(e) => {
-                //       e.stopPropagation();
-                //       setVisibleModal(true);
-                //     }}
-                //   />
-                // </SwiperSlide>
                 <SwiperSlide key={index}>
-                  <div
-                    className="w-full cursor-pointer rounded-xl relative overflow-hidden"
-                    style={{ height: "1146px", width: "764px" }}
-                  >
-                    <Image
-                      alt={`selected-image-${index}`}
-                      src={image.url}
-                      layout="fill"
-                      objectFit="cover"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setVisibleModal(true);
-                      }}
-                    />
-                  </div>
+                  <img
+                    className="w-full cursor-pointer rounded-xl"
+                    alt="selected-image"
+                    src={image.url}
+                    width={764}
+                    height={1146}
+                    loading="lazy"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVisibleModal(true);
+                    }}
+                  />
                 </SwiperSlide>
+                // <SwiperSlide key={index}>
+                //   <div
+                //     className="w-full cursor-pointer rounded-xl"
+                //   >
+                //     <Image
+                //       alt={`selected-image-${index}`}
+                //       src={image.url}
+                //       layout="fill"
+                //       objectFit="cover"
+                //       onClick={(e) => {
+                //         e.stopPropagation();
+                //         setVisibleModal(true);
+                //       }}
+                //     />
+                //   </div>
+                // </SwiperSlide>
               ))}
             </Swiper>
           </div>
