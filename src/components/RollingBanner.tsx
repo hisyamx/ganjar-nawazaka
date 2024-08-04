@@ -4,7 +4,7 @@ import Glare from "../../public/glare/glare_white.svg";
 import Text from "./Text";
 
 const BANNERS = Array.from({ length: 3 }).map(
-  () => "14 September 2024, pukul 07.00 - 13.00 WIB"
+  () => "14 September 2024, 07.00 - 13.00 WIB"
 );
 const RollingBanner = () => {
   return (
@@ -12,7 +12,7 @@ const RollingBanner = () => {
       id="rolling-banner"
       className="wrapper overflow-hidden will-change-auto rounded-xl"
     >
-      <div className="slide-container bg-gray-100 text-black py-10pxr text-14pxr leading-30pxr will-change-auto">
+      <div className="slide-container bg-gray-100 text-black py-10pxr text-14pxr leading-24pxr will-change-auto">
         <ul className="slide-wrapper will-change-auto">
           <div className="slide-original will-change-auto">
             {BANNERS.map((banner, i) => (
