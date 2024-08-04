@@ -42,7 +42,7 @@ const FooterSection = () => {
           display="inline-block"
           className={`text-16pxr leading-45pxr medium:text-24pxr medium:leading-57pxr large:text-32pxr large:leading-64pxr whitespace-pre-line ${BonVivantFont.className}`}
         >
-          Saka & Ganjar
+          Nawazaka & Ganjar
         </Text>
         <div className="flex justify-center mt-4">
           <a

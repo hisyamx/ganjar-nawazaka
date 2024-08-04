@@ -7,13 +7,13 @@ import { JakartaFont } from "@/style/fonts";
 import { ToastProvider } from "@/components/toast/ToastProvider";
 
 export const metadata: Metadata = {
-  title: "Ganjar & Nawazaka - Wedding Invitation from Baseec - Wedding app♡",
+  title: "Ganjar & Nawazaka - Wedding Invitation from Baseec♡",
   description:
     "Wedding Invitation Ganjar & Nawazaka Sabtu, 14 September, jam 7 pagi Indonesia",
   openGraph: {
     type: "website",
 
-    title: "Ganjar & Nawazaka - Wedding Invitation from Baseec - Wedding app♡",
+    title: "Ganjar & Nawazaka - Wedding Invitation from Baseec♡",
     locale: "id_ID",
     description:
       "Wedding Invitation Ganjar & Nawazaka Sabtu, 14 September, jam 7 pagi Indonesia",

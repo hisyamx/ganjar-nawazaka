@@ -12,7 +12,7 @@ const RollingBanner = () => {
       id="rolling-banner"
       className="wrapper overflow-hidden will-change-auto rounded-xl"
     >
-      <div className="slide-container bg-gray-100 text-black py-10pxr text-14pxr leading-25pxr will-change-auto">
+      <div className="slide-container bg-gray-100 text-black py-10pxr text-14pxr leading-30pxr will-change-auto">
         <ul className="slide-wrapper will-change-auto">
           <div className="slide-original will-change-auto">
             {BANNERS.map((banner, i) => (
@@ -22,14 +22,14 @@ const RollingBanner = () => {
               </Fragment>
             ))}
           </div>
-          {/* <div className="slide-clone will-change-auto">
+          <div className="slide-clone will-change-auto">
             {BANNERS.map((banner, i) => (
               <Fragment key={i}>
                 <Glare className="flex-none inline" />
                 <Text>{banner}</Text>
               </Fragment>
             ))}
-          </div> */}
+          </div>
         </ul>
       </div>
     </div>

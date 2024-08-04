@@ -11,7 +11,7 @@ import Text from "../Text";
 import { useInterval } from "@/hooks/useInterval";
 import useIsInView from "@/hooks/useIsInView";
 
-const TITLE = ["THE", "WEDDING", "OF", "SAKA", "AND", "GANJAR"];
+const TITLE = ["THE", "WEDDING", "OF", "NAWAZAKA", "AND", "GANJAR"];
 const Welcome = ({
   className,
   onNext,

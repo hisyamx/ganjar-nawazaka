@@ -20,7 +20,6 @@ import useIsInView from "@/hooks/useIsInView";
 
 const TITLE = ["Gallery"];
 
-
 const getGalleryImageLoader = (number: number) => {
   return `/gallery/gallery_${number < 10 ? `0${number}` : number}.jpg`;
 };
@@ -70,11 +69,6 @@ const GallerySection = () => {
     <>
       <section ref={ref} id="gallery-section" className="w-full">
         <div className="text-center">
-          {/* {TITLE.map((title, i) => (
-            <SlideUp key={title} show={transitionIds.includes(i)}>
-              <Title>{title}</Title>
-            </SlideUp>
-          ))} */}
           <SlideUp className="w-full px-24pxr" show={transitionIds.includes(0)}>
             <Title>Gallery</Title>
           </SlideUp>
@@ -91,22 +85,24 @@ const GallerySection = () => {
               onSlideChange={(slider) => setSelectedIndex(slider.realIndex)}
               onSwiper={(swiper) => setSwiper(swiper)}
               speed={400} // Reducing speed for faster transitions
-              // lazy
             >
               {IMAGES.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <img
-                    className="w-full cursor-pointer rounded-xl"
-                    alt="selected-image"
-                    src={image.url}
-                    width={764}
-                    height={1146}
-                    loading="lazy"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setVisibleModal(true);
-                    }}
-                  />
+                  <div
+                    className="w-full cursor-pointer rounded-xl relative overflow-hidden"
+                    style={{ height: "400px" }}
+                  >
+                    <Image
+                      alt={`selected-image-${index}`}
+                      src={image.url}
+                      layout="fill"
+                      objectFit="cover"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setVisibleModal(true);
+                      }}
+                    />
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -134,11 +130,10 @@ const GallerySection = () => {
                 <Image
                   quality={100}
                   loading="lazy"
-                  key={index}
-                  alt="preview"
+                  alt={`thumbnail-${index}`}
                   src={image.url}
-                  width={120}
-                  height={180}
+                  layout="fill"
+                  objectFit="cover"
                 />
                 <div
                   className="w-full h-full absolute left-0 top-0"

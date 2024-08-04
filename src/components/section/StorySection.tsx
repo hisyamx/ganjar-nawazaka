@@ -88,7 +88,7 @@ const Story = ({ visitedWelcome }: { visitedWelcome: boolean }) => {
           <Text
             className={`text-10pxr medium:text-20pxr large:text-24pxr leading-none ${BonVivantFont.className}`}
           >
-            S&G
+            N&G
           </Text>
         </div>
       </div>

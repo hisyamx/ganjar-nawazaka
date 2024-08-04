@@ -72,7 +72,7 @@ const WeddingScroll = () => {
       >
         <audio ref={audioRef} src="/audio/backsound-ttm.mp3" loop />
         {visitedWelcome && (
-          <nav className="fixed bottom-4 right-4 w-auto bg-white shadow-md p-2 rounded-full flex items-center z-50">
+          <nav className="fixed bottom-4 right-4 w-auto bg-white/25 shadow-md p-1 rounded-full flex items-center z-50">
             <button
               onClick={handlePlayPauseMusic}
               className="bg-transparent border-none focus:outline-none"
