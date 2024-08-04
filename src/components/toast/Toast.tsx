@@ -21,10 +21,10 @@ export const ToastWrapper = ({
       } w-full px-24pxr top-24pxr`}
     >
       <div
-        aria-label="토스트 알림"
+        aria-label="toast notification"
         className={` text-white w-full flex items-center justify-start pointer-events-none text-left text-14pxr leading-20pxr p-16pxr`}
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.7)"
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
         }}
       >
         {children}
