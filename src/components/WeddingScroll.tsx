@@ -9,6 +9,7 @@ import GallerySection from "./section/GallerySection";
 import Spacing from "./Spacing";
 import Welcome from "./welcome/Welcome";
 import StorySection from "./section/StorySection";
+import GoogleAnalytics from "./GoogleAnalytics";
 // import CalendarSection from "./section/CalendarSection";
 // import CoupleSection from "./section/CoupleSection";
 // import IntroduceSection from "./section/IntroduceSection";
@@ -70,6 +71,7 @@ const WeddingScroll = () => {
         className="w-full absolute min-h-screen overflow-x-hidden flex flex-col max-w-[28.125rem] right-2/4 scroll-smooth"
         style={{ transform: `translate(50%)` }}
       >
+        {/* <GoogleAnalytics trackingId="G-3F9MPE4K7V" /> */}
         <audio ref={audioRef} src="/audio/backsound-ttm.mp3" loop />
         {visitedWelcome && (
           <nav className="fixed bottom-4 right-4 w-auto bg-white/25 shadow-md p-1 rounded-full flex items-center z-50">

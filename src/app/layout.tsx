@@ -4,6 +4,7 @@ import { JakartaFont } from "@/style/fonts";
 import { ToastProvider } from "@/components/toast/ToastProvider";
 import InspectorWarning from "@/components/InspectorWarning"; // Ensure the correct path
 import ScreenshotWarning from "@/components/ScreenshotWarning";
+import GoogleAnalytics from "@/components/GoogleAnalytics"; // Import the client component
 
 export const metadata: Metadata = {
   title: "Ganjar & Nawazaka - Wedding Invitation from Baseec♡",
@@ -43,6 +44,8 @@ export default function RootLayout({
       <body
         className={JakartaFont.className + " text-black font-normal relative"}
       >
+        {/* <GoogleAnalytics trackingId="G-3F9MPE4K7V" /> */}
+        {/* Use your tracking ID */}
         <ToastProvider>
           <InspectorWarning />
           <ScreenshotWarning />
