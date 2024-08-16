@@ -1,10 +1,12 @@
+// src/app/layout.tsx
+
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { JakartaFont } from "@/style/fonts";
 import { ToastProvider } from "@/components/toast/ToastProvider";
-import InspectorWarning from "@/components/InspectorWarning"; // Ensure the correct path
+import InspectorWarning from "@/components/InspectorWarning";
 import ScreenshotWarning from "@/components/ScreenshotWarning";
-import GoogleAnalytics from "@/components/GoogleAnalytics"; // Import the client component
+import Script from "next/script"; // Import Script from next/script
 
 export const metadata: Metadata = {
   title: "Ganjar & Nawazaka - Wedding Invitation from Baseec♡",
@@ -36,16 +38,30 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="id">
+      <head>
+        {/* Google Tag (gtag.js) */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-3F9MPE4K7V`}
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-3F9MPE4K7V');
+          `}
+        </Script>
+      </head>
       <body
         className={JakartaFont.className + " text-black font-normal relative"}
       >
-        {/* <GoogleAnalytics trackingId="G-3F9MPE4K7V" /> */}
-        {/* Use your tracking ID */}
         <ToastProvider>
           <InspectorWarning />
           <ScreenshotWarning />
