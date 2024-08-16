@@ -1,13 +1,16 @@
+import dynamic from "next/dynamic";
 import WeddingScroll from "@/components/WeddingScroll";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+
+// Dynamically import GoogleAnalytics with SSR disabled
+const GoogleAnalytics = dynamic(() => import("@/components/GoogleAnalytics"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
     <>
-      {/* Add GoogleAnalytics component here */}
+      {/* GoogleAnalytics will only be rendered on the client side */}
       <GoogleAnalytics trackingId="G-3F9MPE4K7V" />
-
-      {/* Existing content */}
       <WeddingScroll />
     </>
   );
