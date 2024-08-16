@@ -5,13 +5,13 @@ import Image from "next/image";
 import AccountSection from "./section/AccountSection";
 import AddressSection from "./section/AddressSection";
 import BlockPintch from "./BlockPintch";
-import CalendarSection from "./section/CalendarSection";
-import CoupleSection from "./section/CoupleSection";
 import GallerySection from "./section/GallerySection";
-import IntroduceSection from "./section/IntroduceSection";
 import Spacing from "./Spacing";
 import Welcome from "./welcome/Welcome";
 import StorySection from "./section/StorySection";
+// import CalendarSection from "./section/CalendarSection";
+// import CoupleSection from "./section/CoupleSection";
+// import IntroduceSection from "./section/IntroduceSection";
 
 const WeddingScroll = () => {
   const [visitedWelcome, setVisitedWelcome] = useState(false);

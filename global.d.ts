@@ -14,5 +14,6 @@ export declare global {
         }) => void;
       };
     };
+    gtag: (...args: any[]) => void;
   }
 }
