@@ -7,6 +7,7 @@ import { ToastProvider } from "@/components/toast/ToastProvider";
 import InspectorWarning from "@/components/InspectorWarning";
 import ScreenshotWarning from "@/components/ScreenshotWarning";
 import Script from "next/script"; // Import Script from next/script
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Ganjar & Nawazaka - Wedding Invitation from Baseec♡",
@@ -67,6 +68,7 @@ export default function RootLayout({
           <ScreenshotWarning />
           {children}
         </ToastProvider>
+        <Analytics />
         <div id="portal"></div>
       </body>
     </html>
